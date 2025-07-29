@@ -1,0 +1,36 @@
+# Next.js build output
+.next/
+out/
+
+# Node modules
+node_modules/
+
+# Dependency lock
+package-lock.json
+pnpm-lock.yaml
+yarn.lock
+
+# Vercel output
+.vercel/
+
+# Public files (optional)
+public/
+
+# Coverage (kalau pakai testing)
+coverage/
+
+# Build artifacts (optional)
+dist/
+build/
+
+# Config/system files
+*.log
+*.cache
+*.tsbuildinfo
+
+# Editor/IDE
+.vscode/
+.idea/
+
+# Git
+.git/
