@@ -1,7 +1,7 @@
+import js from "@eslint/js";
+import { FlatCompat } from "@eslint/eslintrc";
 import { dirname } from "path";
 import { fileURLToPath } from "url";
-import { FlatCompat } from "@eslint/eslintrc";
-import js from "@eslint/js";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
@@ -11,59 +11,53 @@ const compat = new FlatCompat({
   recommendedConfig: js.configs.recommended,
 });
 
-const eslintConfig = [
-  ...compat.config({
-    extends: [
-      "next/core-web-vitals",
-      "next/typescript",
-      "prettier",
-      "plugin:prettier/recommended",
-      "plugin:react/recommended",
-      "plugin:react-hooks/recommended",
-      "eslint:recommended",
-      "next",
+export default [
+  {
+    ignores: [
+      "**/node_modules/**",
+      "**/.next/**",
+      "**/dist/**",
+      "**/out/**",
+      "**/coverage/**",
+      "**/public/**",
+      "**/*.config.js",
     ],
+  },
+  ...compat.config({
+    extends: ["next/core-web-vitals", "prettier"],
     plugins: ["@typescript-eslint", "prettier", "react", "react-hooks"],
     rules: {
-      semi: ["error"],
+      // Style rules
+      semi: ["error", "always"],
       quotes: ["error", "double"],
       "prefer-arrow-callback": ["error"],
       "prefer-template": ["error"],
-      // JavaScript rules
+      "prettier/prettier": "warn",
+
+      // JS/TS best practices
       "prefer-const": "warn",
       "no-var": "warn",
       "no-unused-vars": "warn",
       "object-shorthand": "warn",
       "quote-props": ["warn", "as-needed"],
-      // TypeScript rules
-      "@typescript-eslint/array-type": [
-        "warn",
-        {
-          default: "array",
-        },
-      ],
+
+      // TypeScript-specific
+      "@typescript-eslint/array-type": ["warn", { default: "array" }],
       "@typescript-eslint/consistent-type-assertions": [
         "warn",
-        {
-          assertionStyle: "as",
-          objectLiteralTypeAssertions: "never",
-        },
+        { assertionStyle: "as", objectLiteralTypeAssertions: "never" },
       ],
-      // React rules
-      "react/jsx-fragments": ["warn", "syntax"], // Shorthand syntax for React fragments
+
+      // React-specific
+      "react/jsx-fragments": ["warn", "syntax"],
       "react/jsx-filename-extension": [
         "warn",
-        {
-          extensions: ["ts", "tsx"],
-        },
+        { extensions: [".tsx"] }, // Only .tsx for JSX
       ],
-      "react-hooks/rules-of-hooks": "error", // Checks rules of Hooks
-      "react-hooks/exhaustive-deps": "warn", // Checks effect dependencies
-      "react/react-in-jsx-scope": "off",
-      "react/prop-types": "off",
-      "prettier/prettier": "warn",
+      "react-hooks/rules-of-hooks": "error",
+      "react-hooks/exhaustive-deps": "warn",
+      "react/react-in-jsx-scope": "off", // Not needed in Next.js
+      "react/prop-types": "off", // Using TypeScript
     },
   }),
 ];
-
-export default eslintConfig;
