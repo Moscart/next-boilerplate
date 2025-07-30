@@ -11,7 +11,7 @@ const compat = new FlatCompat({
   recommendedConfig: js.configs.recommended,
 });
 
-export default [
+const eslintConfig = [
   {
     ignores: [
       "**/node_modules/**",
@@ -24,40 +24,14 @@ export default [
     ],
   },
   ...compat.config({
-    extends: ["next/core-web-vitals", "prettier"],
-    plugins: ["@typescript-eslint", "prettier", "react", "react-hooks"],
+    extends: ["next", "next/core-web-vitals", "next/typescript", "prettier"],
     rules: {
-      // Style rules
-      semi: ["error", "always"],
+      semi: ["error"],
       quotes: ["error", "double"],
       "prefer-arrow-callback": ["error"],
       "prefer-template": ["error"],
-      "prettier/prettier": "warn",
-
-      // JS/TS best practices
-      "prefer-const": "warn",
-      "no-var": "warn",
-      "no-unused-vars": "warn",
-      "object-shorthand": "warn",
-      "quote-props": ["warn", "as-needed"],
-
-      // TypeScript-specific
-      "@typescript-eslint/array-type": ["warn", { default: "array" }],
-      "@typescript-eslint/consistent-type-assertions": [
-        "warn",
-        { assertionStyle: "as", objectLiteralTypeAssertions: "never" },
-      ],
-
-      // React-specific
-      "react/jsx-fragments": ["warn", "syntax"],
-      "react/jsx-filename-extension": [
-        "warn",
-        { extensions: [".tsx"] }, // Only .tsx for JSX
-      ],
-      "react-hooks/rules-of-hooks": "error",
-      "react-hooks/exhaustive-deps": "warn",
-      "react/react-in-jsx-scope": "off", // Not needed in Next.js
-      "react/prop-types": "off", // Using TypeScript
     },
   }),
 ];
+
+export default eslintConfig;
