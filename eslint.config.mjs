@@ -26,10 +26,29 @@ const eslintConfig = [
   ...compat.config({
     extends: ["next", "next/core-web-vitals", "next/typescript", "prettier"],
     rules: {
+      // JavaScript/General Rules
       semi: ["error"],
       quotes: ["error", "double"],
       "prefer-arrow-callback": ["error"],
       "prefer-template": ["error"],
+      "no-console": ["warn"],
+      "prefer-const": ["error"],
+
+      // TypeScript Rules (using built-in Next.js TypeScript config)
+      "@typescript-eslint/no-unused-vars": [
+        "error",
+        {
+          argsIgnorePattern: "^_",
+          varsIgnorePattern: "^_",
+          caughtErrorsIgnorePattern: "^_",
+        },
+      ],
+      "@typescript-eslint/no-explicit-any": ["warn"],
+
+      // React/Next.js Rules
+      "react/prop-types": "off", // Not needed with TypeScript
+      "react/react-in-jsx-scope": "off", // Not needed in Next.js
+      "react-hooks/exhaustive-deps": ["warn"],
     },
   }),
 ];
