@@ -23,12 +23,12 @@ A modern, well-configured Next.js boilerplate with TypeScript, Tailwind CSS, and
 - **Linting**: ESLint 9 with Next.js, TypeScript, and Prettier configs
 - **Formatting**: Prettier with Tailwind CSS plugin
 - **Git Hooks**: Husky + lint-staged
-- **Package Manager**: npm
+- **Package Manager**: pnpm
 
 ## 🛠️ Prerequisites
 
 - Node.js 18+
-- npm/yarn/pnpm/bun
+- pnpm (recommended) / npm / yarn / bun
 
 ## 🚀 Getting Started
 
@@ -42,13 +42,13 @@ A modern, well-configured Next.js boilerplate with TypeScript, Tailwind CSS, and
 2. **Install dependencies**
 
    ```bash
-   npm install
+   pnpm install
    ```
 
 3. **Run the development server**
 
    ```bash
-   npm run dev
+   pnpm dev
    ```
 
 4. **Open your browser**
@@ -56,15 +56,15 @@ A modern, well-configured Next.js boilerplate with TypeScript, Tailwind CSS, and
 
 ## 📜 Available Scripts
 
-| Script                   | Description                              |
-| ------------------------ | ---------------------------------------- |
-| `npm run dev`            | Start development server with Turbo mode |
-| `npm run build`          | Build the application for production     |
-| `npm run start`          | Start the production server              |
-| `npm run lint`           | Run ESLint to check for issues           |
-| `npm run lint:fix`       | Run ESLint and fix auto-fixable issues   |
-| `npm run prettier`       | Format all files with Prettier           |
-| `npm run prettier:check` | Check if files are formatted correctly   |
+| Script                | Description                              |
+| --------------------- | ---------------------------------------- |
+| `pnpm dev`            | Start development server with Turbo mode |
+| `pnpm build`          | Build the application for production     |
+| `pnpm start`          | Start the production server              |
+| `pnpm lint`           | Run ESLint to check for issues           |
+| `pnpm lint:fix`       | Run ESLint and fix auto-fixable issues   |
+| `pnpm prettier`       | Format all files with Prettier           |
+| `pnpm prettier:check` | Check if files are formatted correctly   |
 
 ## 🔧 Configuration
 
@@ -141,7 +141,7 @@ The project automatically runs the following on staged files before each commit:
 
 ### Pre-push Hooks
 
-- Runs `npm run build` to ensure the project compiles successfully
+- Runs `pnpm build` to ensure the project compiles successfully
 
 ## 🚀 Deployment
 
